@@ -22,7 +22,6 @@ import {
   ServerChartComponent,
   RevenueChartComponent,
   DailyLineChartComponent,
-  SupportRequestsComponent,
   ProjectStatChartComponent
 } from './components';
 import { SharedModule } from '../../shared/shared.module';
@@ -37,7 +36,6 @@ import { DashboardService } from './services';
     ServerChartComponent,
     RevenueChartComponent,
     DailyLineChartComponent,
-    SupportRequestsComponent,
     ProjectStatChartComponent
   ],
   imports: [

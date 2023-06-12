@@ -13,13 +13,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { TablesPageComponent } from './containers';
 import { TablesRoutingModule } from './tables-routing.module';
 import { SharedModule } from '../../shared/shared.module';
-import { EmployeeTableComponent, MaterialTableComponent } from './components';
+import { EmployeeTableComponent } from './components';
 import { TablesService } from './services';
 
 @NgModule({
   declarations: [
     TablesPageComponent,
-    MaterialTableComponent,
     EmployeeTableComponent
   ],
   imports: [

@@ -9,18 +9,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
 
 import { HeaderComponent } from './containers';
-import { UserComponent, EmailComponent } from './components';
-import { NotificationsComponent } from './components/notifications/notifications.component';
-import { SearchComponent } from './components/search/search.component';
+import { UserComponent } from './components';
 import { ShortNamePipe } from './pipes';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     UserComponent,
-    EmailComponent,
-    NotificationsComponent,
-    SearchComponent,
     ShortNamePipe
   ],
   exports: [

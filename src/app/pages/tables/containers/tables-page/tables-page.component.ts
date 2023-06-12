@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { TablesService } from '../../services';
-import { Customer, Employee } from '../../models';
+import { Employee } from '../../models';
 
 @Component({
   selector: 'app-tables-page',
@@ -11,10 +11,8 @@ import { Customer, Employee } from '../../models';
 })
 export class TablesPageComponent {
   public employeeTableData$: Observable<Employee[]>
-  public materialTableData$: Observable<Customer[]>
 
   constructor(private service: TablesService) {
     this.employeeTableData$ = service.loadEmployeeTableData();
-    this.materialTableData$ = service.loadMaterialTableData();
   }
 }
