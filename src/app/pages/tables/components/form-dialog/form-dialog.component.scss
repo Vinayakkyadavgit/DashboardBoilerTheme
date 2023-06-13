@@ -1,0 +1,23 @@
+.form-block {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+
+}
+
+
+.footer-dialog {
+    height: 60px;
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+        margin: 0px 10px;
+    }
+
+    button:disabled {
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        color: #666666;
+    }
+}

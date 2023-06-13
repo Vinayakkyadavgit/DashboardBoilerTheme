@@ -15,11 +15,16 @@ import { TablesRoutingModule } from './tables-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { EmployeeTableComponent } from './components';
 import { TablesService } from './services';
+import { FormDialogComponent } from './components/form-dialog/form-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatInput, MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
     TablesPageComponent,
-    EmployeeTableComponent
+    EmployeeTableComponent,
+    FormDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -33,10 +38,14 @@ import { TablesService } from './services';
     MatToolbarModule,
     MatPaginatorModule,
     MatFormFieldModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatInputModule,
     SharedModule
   ],
   providers: [
     TablesService
-  ]
+  ],
+  entryComponents : [FormDialogComponent]
 })
 export class TablesModule { }

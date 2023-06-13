@@ -2,8 +2,11 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 import { Employee } from '../../models/employee';
+import { FormDialogComponent } from '../form-dialog/form-dialog.component';
+import { FormFields } from '../../models/form';
 
 @Component({
   selector: 'app-employee-table',
@@ -12,7 +15,7 @@ import { Employee } from '../../models/employee';
 })
 export class EmployeeTableComponent implements OnInit {
   @Input() employeeTableData: Employee[];
-  public displayedColumns: string[] = ['select', 'name', 'company', 'city', 'state','operations'];
+  public displayedColumns: string[] = ['name', 'company', 'city', 'state','operations'];
   public dataSource: MatTableDataSource<Employee>;
   public selection = new SelectionModel<Employee>(true, []);
 
@@ -20,33 +23,16 @@ export class EmployeeTableComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
+  constructor(public dialog: MatDialog){
+  };
+  
+
   public ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Employee>(this.employeeTableData);
 
     this.dataSource.paginator = this.paginator;
   }
 
-  /** Whether the number of selected elements matches the total number of rows. */
-  public isAllSelected(): boolean {
-    const numSelected = this.selection.selected.length;
-    const numRows = this.dataSource.data.length;
-    return numSelected === numRows;
-  }
-
-  /** Selects all rows if they are not all selected; otherwise clear selection. */
-  public masterToggle(): void {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
-  }
-
-  /** The label for the checkbox on the passed row */
-  public checkboxLabel(row?: any): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
-    }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
-  }
 
   public applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -56,5 +42,63 @@ export class EmployeeTableComponent implements OnInit {
   public showFilterInput(): void {
     this.isShowFilterInput = !this.isShowFilterInput;
     this.dataSource = new MatTableDataSource<Employee>(this.employeeTableData);
+  }
+
+  openForm(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.panelClass = 'my-dialog';
+    let fields: Array<FormFields> =   [
+      {
+        type: "input",
+        label: "Username",
+        inputType: "text",
+        name: "name",
+        validations: [
+          {
+            name: "required",
+            validator: "required",
+            message: "Name Required"
+          },
+          {
+            name: "pattern",
+            validator: "^[a-zA-Z]+$",
+            message: "Accept only text"
+          }
+        ]
+      }, 
+      {
+        type: "password",
+        label: "Password",
+        inputType: "text",
+        name: "name",
+        validations: [
+          {
+            name: "required",
+            validator: "required",
+            message: "Password Required"
+          }
+        ]
+      }
+    ];
+    dialogConfig.data = fields;
+    const dialogRef = this.dialog.open(FormDialogComponent, dialogConfig);
+ 
+    dialogRef.afterClosed().subscribe((data) => {
+    console.log('hello');
+    });
+  }
+
+  editForm(): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.panelClass = 'my-dialog';
+    dialogConfig.data = {
+       
+     };
+ 
+    const dialogRef = this.dialog.open(FormDialogComponent, dialogConfig);
+ 
+    dialogRef.afterClosed().subscribe((data) => {
+    console.log('hello');
+    });
   }
 }

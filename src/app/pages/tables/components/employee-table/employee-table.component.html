@@ -14,34 +14,12 @@
     <button class="employee-table-wrapper__button" mat-mini-fab (click)="showFilterInput()">
       <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
     </button>
-    <button mat-flat-button color="warn">
+    <button mat-flat-button color="warn" (click)="openForm()">
       Add  <mat-icon class="employee-table-wrapper__icon">add</mat-icon>
     </button>
   </mat-card-title>
   <mat-card-content class="employee-table__content">
     <table class="employee-table__table" mat-table [dataSource]="dataSource">
-
-      <!-- Checkbox Column -->
-      <ng-container matColumnDef="select">
-        <th class="employee-table__table-checkbox" mat-header-cell *matHeaderCellDef>
-          <mat-checkbox
-            color="primary"
-            (change)="$event ? masterToggle() : null"
-            [checked]="selection.hasValue() && isAllSelected()"
-            [indeterminate]="selection.hasValue() && !isAllSelected()"
-            [aria-label]="checkboxLabel()">
-          </mat-checkbox>
-        </th>
-        <td class="employee-table__table-checkbox" mat-cell *matCellDef="let row">
-          <mat-checkbox
-            color="primary"
-            (click)="$event.stopPropagation()"
-            (change)="$event ? selection.toggle(row) : null"
-            [checked]="selection.isSelected(row)"
-            [aria-label]="checkboxLabel(row)">
-          </mat-checkbox>
-        </td>
-      </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="name" >

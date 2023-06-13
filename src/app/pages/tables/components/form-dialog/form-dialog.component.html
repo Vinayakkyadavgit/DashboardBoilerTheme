@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>{{headerTitle}}</h2>
+<hr>
+<ng-container *ngIf="fields">
+    <form [formGroup]="dynamicForm" class="form-block" >
+        <ng-container *ngFor="let controls of fields">
+            <mat-form-field appearance="outline">
+                <mat-label>{{controls.label}}</mat-label>
+                <input matInput [type]="controls.type" [formControlName]="controls.label" />
+            </mat-form-field>
+            <ng-container *ngFor="let validation of controls.validations">
+                <mat-error
+                    *ngIf="dynamicForm.controls[controls.label].touched && dynamicForm.controls[controls.label].errors">
+                    <p *ngIf="dynamicForm.controls[controls.label].errors[validation.name]">
+                        {{validation.message}}
+                    </p>
+                </mat-error>
+            </ng-container>
+        </ng-container>
+    </form> 
+</ng-container>
+<hr>
+<mat-dialog-actions class="footer-dialog">
+    <button class="mat-raised-button mat-primary" [disabled]="!dynamicForm.valid" (click)="save()">Save</button>
+    <button class="mat-raised-button" (click)="close()">Cancel</button>
+</mat-dialog-actions>

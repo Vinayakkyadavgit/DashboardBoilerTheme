@@ -367,3 +367,11 @@ div.apexcharts-xaxistooltip-bottom:after {
 ::-webkit-scrollbar-thumb { height: 50px; background-color: $light-grey; border-radius: 36px;}
 ::-webkit-scrollbar-corner { background-color: $scrollbar-corner-color;}
 ::-webkit-resizer { background-color: $dark-grey;}
+
+
+.my-dialog {
+  height: 80%;
+  width: 80%;
+  border-radius: 10px;
+  background: lightcyan;
+}
