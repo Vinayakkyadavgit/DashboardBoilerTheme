@@ -2,8 +2,9 @@ export interface FormFields {
     type: string,
     label: string,
     inputType: string,
-    name: string
-    validations: Array<CustomFormValidator>
+    name: string,
+    validations: Array<CustomFormValidator>,
+    value?: any
 }
 
 

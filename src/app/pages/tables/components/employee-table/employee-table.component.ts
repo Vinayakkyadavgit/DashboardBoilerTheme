@@ -50,14 +50,14 @@ export class EmployeeTableComponent implements OnInit {
     let fields: Array<FormFields> =   [
       {
         type: "input",
-        label: "Username",
+        label: "Name",
         inputType: "text",
         name: "name",
         validations: [
           {
             name: "required",
             validator: "required",
-            message: "Name Required"
+            message: "Name is Required"
           },
           {
             name: "pattern",
@@ -67,15 +67,41 @@ export class EmployeeTableComponent implements OnInit {
         ]
       }, 
       {
-        type: "password",
-        label: "Password",
+        type: "input",
+        label: "Company",
         inputType: "text",
-        name: "name",
+        name: "company",
         validations: [
           {
             name: "required",
             validator: "required",
-            message: "Password Required"
+            message: "Company Name is Required"
+          }
+        ]
+      },
+      {
+        type: "input",
+        label: "State",
+        inputType: "text",
+        name: "state",
+        validations: [
+          {
+            name: "required",
+            validator: "required",
+            message: "State Name is Required"
+          }
+        ]
+      },
+      {
+        type: "input",
+        label: "City",
+        inputType: "text",
+        name: "city",
+        validations: [
+          {
+            name: "required",
+            validator: "required",
+            message: "City Name is Required"
           }
         ]
       }
@@ -84,21 +110,80 @@ export class EmployeeTableComponent implements OnInit {
     const dialogRef = this.dialog.open(FormDialogComponent, dialogConfig);
  
     dialogRef.afterClosed().subscribe((data) => {
-    console.log('hello');
     });
   }
 
-  editForm(): void {
+  editForm(element): void {
+    console.log(element)
     const dialogConfig = new MatDialogConfig();
     dialogConfig.panelClass = 'my-dialog';
-    dialogConfig.data = {
-       
-     };
- 
+    let fields: Array<FormFields> =   [
+      {
+        type: "input",
+        label: "Name",
+        inputType: "text",
+        name: "name",
+        value: element.name,
+        validations: [
+          {
+            name: "required",
+            validator: "required",
+            message: "Name is Required"
+          },
+          {
+            name: "pattern",
+            validator: "^[a-zA-Z]+$",
+            message: "Accept only text"
+          }
+        ]
+      }, 
+      {
+        type: "input",
+        label: "Company",
+        inputType: "text",
+        name: "company",
+        value: element.company,
+        validations: [
+          {
+            name: "required",
+            validator: "required",
+            message: "Company Name is Required"
+          }
+        ]
+      },
+      {
+        type: "input",
+        label: "State",
+        inputType: "text",
+        name: "state",
+        value: element.state,
+        validations: [
+          {
+            name: "required",
+            validator: "required",
+            message: "State Name is Required"
+          }
+        ]
+      },
+      {
+        type: "input",
+        label: "City",
+        inputType: "text",
+        name: "city",
+        value: element.city,
+        validations: [
+          {
+            name: "required",
+            validator: "required",
+            message: "City Name is Required"
+          }
+        ]
+      }
+    ];
+    dialogConfig.data = fields
     const dialogRef = this.dialog.open(FormDialogComponent, dialogConfig);
  
     dialogRef.afterClosed().subscribe((data) => {
-    console.log('hello');
     });
   }
 }

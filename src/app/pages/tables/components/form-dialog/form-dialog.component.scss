@@ -1,8 +1,9 @@
 .form-block {
     display: flex;
     flex-direction: column;
-    height: 80%;
-
+    height: 82%;
+    position: relative;
+    overflow: auto;
 }
 
 

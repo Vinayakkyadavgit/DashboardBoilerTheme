@@ -38,7 +38,7 @@ export class FormDialogComponent implements OnInit {
             );
           }
         });
-        controls[res.label] = new FormControl('', validationsArray);
+        controls[res.label] = new FormControl(res.value ? res.value : '', validationsArray);
       });
       this.dynamicForm = new FormGroup(
         controls
