@@ -12,7 +12,7 @@ import { Employee } from '../../models/employee';
 })
 export class EmployeeTableComponent implements OnInit {
   @Input() employeeTableData: Employee[];
-  public displayedColumns: string[] = ['select', 'name', 'company', 'city', 'state'];
+  public displayedColumns: string[] = ['select', 'name', 'company', 'city', 'state','operations'];
   public dataSource: MatTableDataSource<Employee>;
   public selection = new SelectionModel<Employee>(true, []);
 

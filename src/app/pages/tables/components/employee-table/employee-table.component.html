@@ -10,8 +10,12 @@
         <mat-icon class="employee-table-wrapper__icon">close</mat-icon>
       </button>
     </div>
+   
     <button class="employee-table-wrapper__button" mat-mini-fab (click)="showFilterInput()">
       <mat-icon class="employee-table-wrapper__icon">search</mat-icon>
+    </button>
+    <button mat-flat-button color="warn">
+      Add  <mat-icon class="employee-table-wrapper__icon">add</mat-icon>
     </button>
   </mat-card-title>
   <mat-card-content class="employee-table__content">
@@ -61,6 +65,17 @@
       <ng-container matColumnDef="state">
         <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> State </th>
         <td class="employee-table__table-body" mat-cell *matCellDef="let element"> {{element.state}} </td>
+      </ng-container>
+
+      <!-- Operations Column -->
+      <ng-container matColumnDef="operations">
+        <th class="employee-table__table-header" mat-header-cell *matHeaderCellDef> Operations </th>
+        <td class="employee-table__table-body" mat-cell *matCellDef="let element"> 
+          <div class="operations">
+          <mat-icon class="icon-ele"> edit </mat-icon>
+          <mat-icon class="icon-ele"> delete </mat-icon>
+        </div>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

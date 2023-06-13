@@ -12,7 +12,6 @@
     padding: 0 24px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 
     @media (max-width: $small) {
       padding: 0 16px;
@@ -62,6 +61,7 @@
     width: 46px;
     height: 46px;
     color: $grey;
+    margin-left: auto;
 
     &:hover {
       background-color: $black-08;
@@ -78,7 +78,7 @@
   }
 
   &__table {
-    width:100%;
+    width: 100%;
     box-shadow: none;
 
     @media (max-width: $small) {
@@ -99,5 +99,16 @@
   &__table-body {
     padding: 1rem;
     font-size: $fs-small;
+  }
+
+}
+
+
+.operations {
+  display: flex;
+  justify-content: space-evenly;
+
+  mat-icon {
+    cursor: pointer;
   }
 }
